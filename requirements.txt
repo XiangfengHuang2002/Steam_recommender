@@ -1,0 +1,29 @@
+# Flask Web 框架
+Flask
+
+# 数据处理
+pandas
+numpy
+
+# 可视化
+plotly
+matplotlib
+seaborn
+
+# PyTorch 及相关
+torch
+torchvision
+torchaudio
+
+# 预训练句向量
+sentence-transformers
+
+# scikit-learn
+scikit-learn
+
+# FAISS 向量搜索
+faiss-cpu
+
+# 其他工具
+joblib
+tqdm
