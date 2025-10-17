@@ -29,7 +29,7 @@
     * 使用 **TF-IDF** 对 `text_features` 进行向量化，作为 **内容推荐模块** 的输入。
 2.  **加权分数 (Popularity Feature)**:
     * 结合好评数（`positive`）和评论总数（`total_reviews`），计算一个更稳定的 **加权分数** (`weighted_score`)，用于平衡游戏的质量和受欢迎程度，避免评论过少的高好评率游戏被过度推荐。
-    * 公式示例：$\text{WeightedScore} = \text{PositivePercent} \times \log(\text{TotalReviews} + 1)$
+    * 公式示例：$$\text{WeightedScore} = \text{PositivePercent} \times \log(\text{TotalReviews} + 1)$$
 3.  **高级分类特征 (Intent Category)**:
     * **（改进）** 虽然在数据清洗和基础特征工程 Notebook 中未直接展示生成过程，但在 **深度模型 (`04`)** 中，使用了 **`intent_category`** 字段进行 Embedding 可视化和模型训练。这表明项目在特征构建阶段引入了基于游戏核心玩法/意图的自动聚类（如 `Workflow.md` 中提到的 KMeans），以指导深度学习模型的相似性学习。
 
@@ -59,7 +59,7 @@
 * **训练目标**: 相似游戏 Embedding 距离近，不相似游戏距离远。
 * **核心损失**: **Triplet Loss**。
     $$L(A, P, N) = \max(\|\mathbf{f}(A) - \mathbf{f}(P)\|_2^2 - \|\mathbf{f}(A) - \mathbf{f}(N)\|_2^2 + \text{margin}, 0)$$
-    其中 $A$ (Anchor)、$P$ (Positive，相似游戏)、$N$ (Negative，不相似游戏) 的构造，需结合游戏的**`intent_category`**和标签相似性来确定。
+    其中 $A$ (Anchor)、$$P$$ (Positive，相似游戏)、$$N$$ (Negative，不相似游戏) 的构造，需结合游戏的**`intent_category`**和标签相似性来确定。
 
 ### 5.4 模型验证（Embedding 可视化）
 * 通过 **t-SNE 降维** 将训练后的 Embedding 映射到 2D 空间。
